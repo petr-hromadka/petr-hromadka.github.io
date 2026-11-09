@@ -497,7 +497,7 @@ body {
 .journal-cinzel {
   font-family: var(--font-cinzel);
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 0.82rem;
   letter-spacing: 0.08em;
   color: var(--text-body);
