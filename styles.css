@@ -1,0 +1,747 @@
+/* ==========================================================================
+   Typography: Self-Hosted Font Declarations (GDPR-Compliant)
+   ========================================================================== */
+
+/* Cormorant Garamond */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('assets/fonts/CormorantGaramond-Regular.woff2') format('woff2'),
+       url('assets/fonts/CormorantGaramond-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('assets/fonts/CormorantGaramond-Italic.woff2') format('woff2'),
+       url('assets/fonts/CormorantGaramond-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('assets/fonts/CormorantGaramond-SemiBold.woff2') format('woff2'),
+       url('assets/fonts/CormorantGaramond-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Libre Baskerville */
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('assets/fonts/LibreBaskerville-Regular.woff2') format('woff2'),
+       url('assets/fonts/LibreBaskerville-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('assets/fonts/LibreBaskerville-Italic.woff2') format('woff2'),
+       url('assets/fonts/LibreBaskerville-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('assets/fonts/LibreBaskerville-Bold.woff2') format('woff2'),
+       url('assets/fonts/LibreBaskerville-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Cinzel */
+@font-face {
+  font-family: 'Cinzel';
+  src: url('assets/fonts/Cinzel-Regular.woff2') format('woff2'),
+       url('assets/fonts/Cinzel-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  src: url('assets/fonts/Cinzel-Bold.woff2') format('woff2'),
+       url('assets/fonts/Cinzel-Bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  src: url('assets/fonts/Cinzel-Bold.woff2') format('woff2'),
+       url('assets/fonts/Cinzel-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   Design Tokens & Resets
+   ========================================================================== */
+:root {
+  --bg-color: #FFF7EB;
+  --text-body: #1F2421;
+  --green-dark: #1B3828;
+  --green-accent: #235B3B;
+  --hairline: rgba(27, 56, 40, 0.28);
+  --hairline-subtle: rgba(27, 56, 40, 0.18);
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Libre Baskerville', Georgia, serif;
+  --font-cinzel: 'Cinzel', serif;
+
+  --content-width: 980px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-color);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Tactile archival paper texture overlay */
+.texture-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(27, 56, 40, 0.07) 0.6px, transparent 0.7px),
+    radial-gradient(circle at 75% 75%, rgba(27, 56, 40, 0.06) 0.5px, transparent 0.6px),
+    radial-gradient(circle at 50% 50%, rgba(27, 56, 40, 0.04) 0.8px, transparent 0.9px),
+    linear-gradient(rgba(27, 56, 40, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 56, 40, 0.015) 1px, transparent 1px);
+  background-size: 16px 16px, 20px 20px, 28px 28px, 32px 32px, 32px 32px;
+  background-position: 0 0, 8px 8px, 14px 14px, 0 0, 0 0;
+}
+
+.site-wrapper {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Top Navigation
+   ========================================================================== */
+.site-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.75rem;
+  padding: 1.6rem 0;
+  background-color: var(--bg-color);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+.site-nav::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100vw - 4rem);
+  height: 1px;
+  background-color: var(--hairline);
+}
+
+.nav-item {
+  font-family: var(--font-cinzel);
+  font-size: 0.84rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-body);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: var(--green-accent);
+}
+
+/* ==========================================================================
+   Section Dividers
+   ========================================================================== */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem 0 3.5rem;
+  width: 100%;
+  position: relative;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--hairline);
+}
+
+.divider-leaf {
+  padding: 0 1.25rem;
+  color: var(--green-dark);
+  font-size: 2.1rem;
+  line-height: 1;
+  font-family: var(--font-serif);
+}
+
+.short-divider {
+  width: calc(100% - 4rem);
+  margin: 0 auto;
+  height: 1px;
+  background-color: var(--hairline-subtle);
+  border: none;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+  padding-top: 2.75rem;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-family: var(--font-cinzel);
+  font-size: 0.76rem;
+  letter-spacing: 0.24em;
+  color: var(--green-dark);
+  text-transform: uppercase;
+  margin-bottom: 0.15rem;
+}
+
+.hero-name {
+  font-family: var(--font-serif);
+  font-size: 4.35rem;
+  font-weight: 600;
+  color: var(--text-body);
+  letter-spacing: -0.015em;
+  margin-bottom: 2.5rem;
+  line-height: 1.05;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1px 1fr;
+  gap: 2.5rem;
+  align-items: stretch;
+  text-align: left;
+}
+
+.hero-text-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-divider-col {
+  width: 1px;
+  background-color: var(--hairline);
+  margin: 2rem 0;
+  flex-shrink: 0;
+}
+
+.hero-bio {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.45;
+  color: var(--text-body);
+}
+
+.hero-bio p {
+  margin-bottom: 0.75rem;
+}
+
+.hero-bio p:last-child {
+  margin-bottom: 0;
+}
+
+.hero-contact {
+  margin-top: 1.2rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text-body);
+  display: flex;
+  flex-direction: column;
+}
+
+.email-btn {
+  align-self: center;
+  margin-top: 0.75rem;
+  background-color: var(--green-dark);
+  color: #FFFFFF;
+  font-family: var(--font-cinzel);
+  font-size: 0.74rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  padding: 0.65rem 1.6rem;
+  border-radius: 0;
+  transition: opacity 0.2s ease;
+}
+
+.email-btn:hover {
+  opacity: 0.9;
+}
+
+.hero-photo-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  margin-left: auto;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ==========================================================================
+   Section Titles
+   ========================================================================== */
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 3.1rem;
+  font-weight: 400;
+  text-align: center;
+  color: var(--text-body);
+  margin-bottom: 2.75rem;
+}
+
+/* ==========================================================================
+   Curriculum Vitae Section
+   ========================================================================== */
+.cv-block {
+  margin-bottom: 2.5rem;
+}
+
+.cv-subheading {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  margin-bottom: 0.85rem;
+}
+
+.cv-grid {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.5rem;
+  row-gap: 0.45rem;
+  align-items: baseline;
+}
+
+.cv-date-item {
+  white-space: nowrap;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--green-dark);
+}
+
+.cv-desc-item {
+  font-family: var(--font-body);
+  color: var(--text-body);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+/* Single column list for research visits */
+.cv-single-col-list {
+  list-style: none;
+  font-family: var(--font-body);
+  color: var(--text-body);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.cv-single-col-list li {
+  margin-bottom: 0.35rem;
+}
+
+.cv-narrative-text {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+
+.cv-justified {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.cv-narrative-text p + p {
+  margin-top: 0.75rem;
+}
+
+/* ==========================================================================
+   Selected Work Section
+   ========================================================================== */
+.selected-work-section .section-title {
+  margin-bottom: 1.5rem;
+}
+
+.selected-work-item {
+  padding: 1.4rem 0;
+}
+
+.work-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--text-body);
+  margin-bottom: 0.25rem;
+}
+
+.work-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.work-title a:hover {
+  color: var(--green-dark);
+}
+
+.work-journal {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--green-dark);
+  margin-bottom: 0.2rem;
+}
+
+.work-authors {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-body);
+}
+
+/* ==========================================================================
+   Research Section
+   ========================================================================== */
+.research-group-title {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  margin: 2rem 0 1rem;
+}
+
+.paper-entry {
+  padding: 1.25rem 0;
+}
+
+.paper-entry-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--green-dark);
+  margin-bottom: 0.25rem;
+}
+
+.paper-entry-byline {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  line-height: 1.5;
+  margin-bottom: 0.45rem;
+}
+
+.journal-cinzel {
+  font-family: var(--font-cinzel);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--text-body);
+}
+
+.paper-links-row {
+  margin-top: 0.45rem;
+}
+
+.paper-link-tag {
+  color: var(--green-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  font-size: 0.85rem;
+  margin-right: 0.25rem;
+  transition: opacity 0.2s ease;
+}
+
+.paper-link-tag:hover {
+  opacity: 0.75;
+}
+
+/* Leaf tilted facing up and to the right */
+.leaf-marker {
+  display: inline-block;
+  font-family: var(--font-serif);
+  color: var(--green-dark);
+  font-size: 1.25rem;
+  margin-right: 1.25rem;
+  transform: rotate(-45deg);
+  transform-origin: center;
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   Media Section (Centered & Resized Leaf Cursor)
+   ========================================================================== */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.75rem 2.25rem;
+}
+
+.media-item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext x='12' y='14' font-family='Cormorant Garamond, serif' font-size='20' fill='%231B3828' text-anchor='middle' dominant-baseline='central' transform='rotate(180 12 12)'%3E%E2%9D%A6%3C/text%3E%3C/svg%3E") 12 2, auto;
+}
+
+.media-outlet-date {
+  font-family: var(--font-cinzel);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  margin-bottom: 0.65rem;
+  cursor: inherit;
+}
+
+.media-headline {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--text-body);
+}
+
+.media-headline a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  cursor: inherit;
+}
+
+.media-headline a:hover {
+  color: var(--green-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  margin-top: 5rem;
+  padding: 3rem 0 4rem;
+  position: relative;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100vw - 4rem);
+  height: 1px;
+  background-color: var(--hairline);
+}
+
+.footer-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-name-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--text-body);
+  margin-bottom: 0.45rem;
+}
+
+.footer-affiliations {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-body);
+}
+
+.footer-affiliations p {
+  margin-bottom: 0.2rem;
+}
+
+.academic-profiles-box {
+  background-color: var(--green-dark);
+  color: #FFFFFF;
+  padding: 1.5rem 2rem;
+  min-width: 250px;
+}
+
+.profiles-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.45rem;
+  margin-bottom: 0.75rem;
+}
+
+.profiles-list {
+  list-style: none;
+  font-size: 0.85rem;
+}
+
+.profiles-list li {
+  margin-bottom: 0.4rem;
+}
+
+.profiles-list a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.profiles-list a:hover {
+  opacity: 0.8;
+}
+
+.footer-bottom-row {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+.footer-bottom-row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100vw - 4rem);
+  height: 1px;
+  background-color: var(--hairline);
+}
+
+.copyright-text {
+  font-family: var(--font-cinzel);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-body);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 820px) {
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .hero-divider-col {
+    display: none;
+  }
+
+  .hero-photo-wrapper {
+    position: relative;
+    max-width: 340px;
+    height: 380px;
+    margin: 0 auto;
+  }
+
+  .media-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-top-row {
+    flex-direction: column;
+  }
+
+  .academic-profiles-box {
+    width: 100%;
+  }
+
+  .cv-justified {
+    text-align: left;
+  }
+}
+
+@media (max-width: 580px) {
+  .site-nav {
+    gap: 1.5rem;
+  }
+
+  .hero-name {
+    font-size: 3rem;
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-grid {
+    grid-template-columns: 1fr;
+    row-gap: 0.2rem;
+  }
+
+  .cv-date-item {
+    margin-top: 0.4rem;
+  }
+}
