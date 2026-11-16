@@ -154,7 +154,7 @@ body {
 /* ==========================================================================
    Top Navigation
    ========================================================================== */
-.site-nav {
+/* .site-nav {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -175,6 +175,30 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: calc(100vw - 3rem);
+  height: 1px;
+  background-color: var(--hairline);
+} */
+
+.site-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.75rem;
+  padding: 1.6rem 1.5rem;
+  background-color: var(--bg-color);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  padding-top: calc(1.6rem + env(safe-area-inset-top));
+}
+
+.site-nav::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   height: 1px;
   background-color: var(--hairline);
 }
