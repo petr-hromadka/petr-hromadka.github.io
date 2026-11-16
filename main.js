@@ -22,28 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Adjust photo container aspect ratio dynamically on desktop
-  function adjustHeroPhotoAspect() {
-    const textCol = document.querySelector('.hero-text-col');
-    const photoWrapper = document.querySelector('.hero-photo-wrapper');
-    if (textCol && photoWrapper && window.innerWidth > 820) {
-      const targetHeight = textCol.offsetHeight;
-      // 4:5 academic portrait aspect ratio constraint
-      const naturalWidth = Math.round(targetHeight * 0.8);
-      photoWrapper.style.height = `${targetHeight}px`;
-      photoWrapper.style.width = `${naturalWidth}px`;
-      photoWrapper.style.maxWidth = `${naturalWidth}px`;
-    } else if (photoWrapper) {
-      photoWrapper.style.height = '';
-      photoWrapper.style.width = '';
-      photoWrapper.style.maxWidth = '340px';
-    }
-  }
-
   window.addEventListener('scroll', updateActiveLink);
-  window.addEventListener('resize', adjustHeroPhotoAspect);
-  window.addEventListener('load', adjustHeroPhotoAspect);
-
   updateActiveLink();
-  adjustHeroPhotoAspect();
 });

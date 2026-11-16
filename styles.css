@@ -129,21 +129,18 @@ body {
   min-height: 100vh;
 }
 
-/* Tactile archival paper texture overlay */
+/* Subtle Plain Paper Texture Overlay */
 .texture-overlay {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.85;
+  opacity: 0.95;
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(27, 56, 40, 0.07) 0.6px, transparent 0.7px),
-    radial-gradient(circle at 75% 75%, rgba(27, 56, 40, 0.06) 0.5px, transparent 0.6px),
-    radial-gradient(circle at 50% 50%, rgba(27, 56, 40, 0.04) 0.8px, transparent 0.9px),
-    linear-gradient(rgba(27, 56, 40, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(27, 56, 40, 0.015) 1px, transparent 1px);
-  background-size: 16px 16px, 20px 20px, 28px 28px, 32px 32px, 32px 32px;
-  background-position: 0 0, 8px 8px, 14px 14px, 0 0, 0 0;
+    radial-gradient(circle at 15% 20%, rgba(139, 115, 85, 0.05) 0.8px, transparent 1px),
+    radial-gradient(circle at 85% 80%, rgba(27, 56, 40, 0.04) 0.6px, transparent 0.8px),
+    radial-gradient(circle at 50% 50%, rgba(139, 115, 85, 0.04) 1.2px, transparent 1.4px);
+  background-size: 32px 32px, 48px 48px, 64px 64px;
 }
 
 .site-wrapper {
@@ -168,6 +165,7 @@ body {
   top: 0;
   z-index: 50;
   width: 100%;
+  padding-top: calc(1.6rem + env(safe-area-inset-top));
 }
 
 .site-nav::after {
@@ -176,7 +174,7 @@ body {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100vw - 4rem);
+  width: calc(100vw - 3rem);
   height: 1px;
   background-color: var(--hairline);
 }
@@ -226,7 +224,7 @@ body {
 }
 
 .short-divider {
-  width: calc(100% - 4rem);
+  width: calc(100% - 3rem);
   margin: 0 auto;
   height: 1px;
   background-color: var(--hairline-subtle);
@@ -234,7 +232,7 @@ body {
 }
 
 /* ==========================================================================
-   Hero Section
+   Hero Section (Pure Flexbox Height Matching)
    ========================================================================== */
 .hero-section {
   padding-top: 2.75rem;
@@ -256,27 +254,29 @@ body {
   font-weight: 600;
   color: var(--text-body);
   letter-spacing: -0.015em;
-  margin-bottom: 2.5rem;
+  margin-bottom: 4rem;
   line-height: 1.05;
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1.35fr 1px 1fr;
-  gap: 2.5rem;
+  display: flex;
+  flex-direction: row;
   align-items: stretch;
+  gap: 2.5rem;
   text-align: left;
 }
 
 .hero-text-col {
+  flex: 1.35;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 .hero-divider-col {
   width: 1px;
   background-color: var(--hairline);
-  margin: 2rem 0;
+  margin: 0;
   flex-shrink: 0;
 }
 
@@ -296,51 +296,23 @@ body {
   margin-bottom: 0;
 }
 
-.hero-contact {
-  margin-top: 1.2rem;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: var(--text-body);
-  display: flex;
-  flex-direction: column;
-}
-
-.email-btn {
-  align-self: center;
-  margin-top: 0.75rem;
-  background-color: var(--green-dark);
-  color: #FFFFFF;
-  font-family: var(--font-cinzel);
-  font-size: 0.74rem;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0.16em;
-  text-decoration: none;
-  padding: 0.65rem 1.6rem;
-  border-radius: 0;
-  transition: opacity 0.2s ease;
-}
-
-.email-btn:hover {
-  opacity: 0.9;
-}
-
 .hero-photo-wrapper {
+  flex: 1;
   position: relative;
   width: 100%;
-  max-width: 360px;
-  margin-left: auto;
+  max-width: 390px;
 }
 
 .hero-photo {
   position: absolute;
-  inset: 0;
+  /* Extends the image box slightly taller top and bottom */
+  inset: -1.5rem 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% + 3rem);
   object-fit: cover;
   display: block;
 }
+ 
 
 /* ==========================================================================
    Section Titles
@@ -355,8 +327,32 @@ body {
 }
 
 /* ==========================================================================
-   Curriculum Vitae Section
+   Curriculum Vitae Section & Email Block
    ========================================================================== */
+.cv-email-block {
+  margin-top: -3.5rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.email-btn {
+  display: inline-block;
+  color: var(--green-dark);
+  font-family: var(--font-cinzel);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  padding: 0.65rem 1.6rem;
+  border-radius: 0;
+  transition: opacity 0.2s ease;
+}
+
+.email-btn:hover {
+  opacity: 0.9;
+}
+
 .cv-block {
   margin-bottom: 2.5rem;
 }
@@ -393,7 +389,6 @@ body {
   line-height: 1.55;
 }
 
-/* Single column list for research visits */
 .cv-single-col-list {
   list-style: none;
   font-family: var(--font-body);
@@ -521,7 +516,6 @@ body {
   opacity: 0.75;
 }
 
-/* Leaf tilted facing up and to the right */
 .leaf-marker {
   display: inline-block;
   font-family: var(--font-serif);
@@ -534,7 +528,7 @@ body {
 }
 
 /* ==========================================================================
-   Media Section (Centered & Resized Leaf Cursor)
+   Media Section
    ========================================================================== */
 .media-grid {
   display: grid;
@@ -597,7 +591,7 @@ body {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100vw - 4rem);
+  width: calc(100vw - 3rem);
   height: 1px;
   background-color: var(--hairline);
 }
@@ -672,7 +666,7 @@ body {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100vw - 4rem);
+  width: calc(100vw - 3rem);
   height: 1px;
   background-color: var(--hairline);
 }
@@ -690,9 +684,7 @@ body {
    ========================================================================== */
 @media (max-width: 820px) {
   .hero-grid {
-    display: flex;
     flex-direction: column;
-    gap: 2rem;
   }
 
   .hero-divider-col {
@@ -700,9 +692,8 @@ body {
   }
 
   .hero-photo-wrapper {
-    position: relative;
+    min-height: 380px;
     max-width: 340px;
-    height: 380px;
     margin: 0 auto;
   }
 
